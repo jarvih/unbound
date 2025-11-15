@@ -1,0 +1,12 @@
+[Unit]
+Description=Build unbound image from Git repo
+
+[Service]
+ExecStartPre=/usr/bin/git clone --depth=1 https://github.com/your/repo.git /tmp/dns
+ExecStartPre=/usr/bin/git -C /tmp/dns pull
+
+[Container]
+Image=unbound:latest
+Containerfile=/tmp/dns/Containerfile
+ContextDir=/tmp/dns
+Build=true
