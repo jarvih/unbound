@@ -19,6 +19,10 @@ mkdir -p /var/lib/unbound
 chown unbound:unbound /var/lib/unbound
 unbound-anchor -a /var/lib/unbound/root.key -v || echo ""
 
+# Create control TLS seritification
+echo "Init unbound-control"
+unbound-control-setup
+
 # Validate config before starting
 echo "Validating Unbound configuration..."
 unbound-checkconf -f /etc/unbound/unbound.conf
