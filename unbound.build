@@ -4,6 +4,7 @@ Description=Build unbound image from Git repo
 [Service]
 ExecStartPre=/usr/bin/git clone --depth=1 https://github.com/jarvih/unbound.git /tmp/dns
 ExecStartPre=/usr/bin/git -C /tmp/dns pull
+ExecStartPost=rm -rf /tmp/dns
 
 [Build]
 ImageTag=localhost/unbound:latest
