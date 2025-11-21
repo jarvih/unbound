@@ -2,11 +2,12 @@
 Description=Build unbound image from Git repo
 
 [Service]
-ExecStartPre=/usr/bin/git clone --depth=1 https://github.com/your/repo.git /tmp/dns
+ExecStartPre=/usr/bin/git clone --depth=1 https://github.com/jarvih/unbound.git /tmp/dns
 ExecStartPre=/usr/bin/git -C /tmp/dns pull
 
-[Container]
-Image=unbound:latest
-Containerfile=/tmp/dns/Containerfile
-ContextDir=/tmp/dns
-Build=true
+[Build]
+ImageTag=localhost/unbound:latest
+File=/tmp/dns/Containerfile
+SetWorkingDirectory=/tmp/dns
+ForceRM=true
+

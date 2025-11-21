@@ -1,0 +1,8 @@
+[Unit]
+Description=Run unbound recursive nameserver
+
+
+[Container]
+Image=unbound.build
+ContainerName=unbound
+PublishPort=53:53/udp
