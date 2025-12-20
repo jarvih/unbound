@@ -6,6 +6,7 @@ Wants=network-online.target
 Image=unbound.build
 ContainerName=unbound
 PublishPort=53:53/udp
+PublishPort=53:53/tcp
 
 [Install]
 WantedBy=default.target
